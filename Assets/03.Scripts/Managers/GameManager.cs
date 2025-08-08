@@ -6,11 +6,14 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
+    // === 다른 매니저들 호출 ===
+    public PlayerManager PlayerManager { get; private set; }
+
     // === 싱글톤 선언 ===
     private static GameManager _instance;
     public static GameManager Instance
     {
-        get // === 방어코드 ===
+        get
         {
             if (_instance == null)
             {
@@ -34,12 +37,21 @@ public class GameManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        // === PlayerManager 생성 ===
+        GameObject playerManagerObject = new GameObject("PlayerManager");
+        PlayerManager = playerManagerObject.AddComponent<PlayerManager>();
+        playerManagerObject.transform.SetParent(transform);
     }
 
-    public Player Player
+    public void StartGame()
     {
-        get { return _player; }
-        set { _player = value; }
+        // 나중에 추가
     }
-    private Player _player;
+
+    public void GameOver()
+    {
+        // 나중에 추가
+    }
+
 }
