@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    private void LateUpdate()
+    {
+        CameraLook();
+    }
+
     // === 이동 ===
     private void Move()
     {
@@ -61,6 +66,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // === 카메라 이동 ===
+    void CameraLook()
+    {
+        _cameraXRot += _mouseDelta.y * _lookSensitivity;
+        _cameraXRot = Mathf.Clamp(_cameraXRot, _minXLook, _maxXLook);
+        cameraBox.localEulerAngles = new Vector3(-_cameraXRot, 0, 0);
 
+        transform.eulerAngles += new Vector3(0, _mouseDelta.x * _lookSensitivity, 0);
+    }
 
+    // === 카메라 입력값 ===
+    public void OnLookInput(InputAction.CallbackContext context)
+    {
+        _mouseDelta = context.ReadValue<Vector2>();
+    }
 }
