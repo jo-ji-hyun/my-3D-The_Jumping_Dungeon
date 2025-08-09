@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Move")]    // === 이동 관련 ===
+    [Header("Move")]   // === 이동 관련 ===
 
     [SerializeField]
     private float _speed = 2.0f;
     private Vector2 _movementInput;
 
-    [SerializeField]
-    private float _jumpForce;
+    [SerializeField]   // === 점프 ===
+    private float _jumpForce = 5.0f;
     public LayerMask groundLayerMask;
 
     [Header("Look")]   // === 카메라 관련 ===
@@ -80,5 +80,36 @@ public class PlayerController : MonoBehaviour
     public void OnLookInput(InputAction.CallbackContext context)
     {
         _mouseDelta = context.ReadValue<Vector2>();
+    }
+
+    // === 입력시 점프 ===
+    public void OnJumpInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started && IsGrounded())
+        {
+            GetComponent<Rigidbody>().AddForce(Vector2.up * _jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    // === 땅인지 판별 ===
+    bool IsGrounded()
+    {
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.01f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.01f) + (transform.up * 0.01f),Vector3.down),
+            new Ray(transform.position + (transform.right * 0.01f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.01f) +(transform.up * 0.01f), Vector3.down)
+        };
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            if (Physics.Raycast(rays[i], 1.0f, groundLayerMask))
+            {
+                return true;  // === groundLayerMask일 경우 ===
+            }
+        }
+
+        return false;        // === groundLayerMask가 아닐경우 ===
     }
 }
