@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput;
 
     [SerializeField]   // === 점프 ===
-    private float _jumpForce = 5.0f;
+    private float _jumpForce = 5.5f;
     public LayerMask groundLayerMask;
 
     [Header("Look")]   // === 카메라 관련 ===

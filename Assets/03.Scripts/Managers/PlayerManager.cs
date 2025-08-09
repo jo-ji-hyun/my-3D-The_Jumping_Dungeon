@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     // === 플레이어 체력 ===
-    public float maxHp = 100f; // === 최대 체력 ===
+    public float maxHp = 3f; // === 최대 체력 ===
     public float curHp;
 
     public void Awake()
