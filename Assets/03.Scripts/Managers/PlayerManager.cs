@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IDamageIbe
+{
+    void SubtractHp(int damage);
+}
 
-public class PlayerManager : MonoBehaviour
+
+public class PlayerManager : MonoBehaviour , IDamageIbe
 {
     // === 플레이어 체력 ===
-    public float maxHp = 3f; // === 최대 체력 ===
-    public float curHp;
+    public int maxHp = 3; // === 최대 체력 ===
+    public int curHp;
+
+    public event Action OnTakeDamage;
 
     public void Awake()
     {
@@ -32,13 +40,14 @@ public class PlayerManager : MonoBehaviour
 
     // === 데미지 계산 ===
 
-    public void AddHp(float value)
+    public void AddHp(int value)
     {
         curHp = Mathf.Min(curHp + value, maxHp);
     }
 
-    public void SubtractHp(float value)
+    public void SubtractHp(int value)
     {
-        curHp = Mathf.Max(curHp - value, 0f);
+        curHp = Mathf.Max(curHp - value, 0);
+        OnTakeDamage?.Invoke();
     }
 }

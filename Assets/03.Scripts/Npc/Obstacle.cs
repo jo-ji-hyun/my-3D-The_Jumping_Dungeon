@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public float damage = 1;
+    // === 장애물 스펙 ===
+    [Header("Damage")]
+    public int damage = 1;
     public float damageDelay = 1.0f;
+
+    // === 인터페이스 IDamageIbe를 List로 불러옴 ===
+    List<IDamageIbe> players = new List<IDamageIbe>();
 
     void Start()
     {
@@ -15,19 +20,26 @@ public class Obstacle : MonoBehaviour
 
     private void DealDamage()
     {
-        GameManager.Instance.PlayerManager.SubtractHp(damage);
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].SubtractHp(damage);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        Debug.Log("충돌 감지");
+        if (other.TryGetComponent(out IDamageIbe damgeIbe))
         {
-            DealDamage();
+            players.Add(damgeIbe);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-
+        if (other.TryGetComponent(out IDamageIbe damgeIbe))
+        {
+            players.Remove(damgeIbe);
+        }
     }
 }
