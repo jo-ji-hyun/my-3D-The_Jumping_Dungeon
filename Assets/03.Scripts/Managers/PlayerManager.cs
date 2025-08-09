@@ -13,17 +13,14 @@ public class PlayerManager : MonoBehaviour
     {
         curHp = maxHp;
     }
+
     private void Update()
     {
+        // === 현재 체력이 0이하일 경우 게임오버 ===
         if (curHp <= 0) 
         {
             GameManager.Instance.GameOver();
         }
-    }
-
-    private void LateUpdate()
-    {
-        SubtractHp(1 * Time.time); // 실험용
     }
 
     public Player Player
