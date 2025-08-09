@@ -13,8 +13,9 @@ public class HpUi : MonoBehaviour
         hpbar.fillAmount = GetPercentage();
     }
 
+    // === float·Î °è»ê ===
     float GetPercentage()
     {
-        return GameManager.Instance.PlayerManager.curHp / GameManager.Instance.PlayerManager.maxHp;
+        return (float)GameManager.Instance.PlayerManager.curHp / GameManager.Instance.PlayerManager.maxHp;
     }
 }

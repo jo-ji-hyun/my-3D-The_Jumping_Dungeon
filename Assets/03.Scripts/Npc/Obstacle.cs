@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour
     // === 장애물 스펙 ===
     [Header("Damage")]
     public int damage = 1;
-    public float damageDelay = 1.0f;
+    public float damageDelay = 0.9f;
 
     // === 인터페이스 IDamageIbe를 List로 불러옴 ===
     List<IDamageIbe> players = new List<IDamageIbe>();
@@ -22,13 +22,12 @@ public class Obstacle : MonoBehaviour
     {
         for (int i = 0; i < players.Count; i++)
         {
-            players[i].SubtractHp(damage);
+            players[i].DamageCall(damage);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("충돌 감지");
         if (other.TryGetComponent(out IDamageIbe damgeIbe))
         {
             players.Add(damgeIbe);
