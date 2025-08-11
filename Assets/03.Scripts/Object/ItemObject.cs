@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public interface IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string GetInteractPrompt();
+}
 
-    // Update is called once per frame
-    void Update()
+public class ItemObject : MonoBehaviour , IInteractable
+{
+    public ItemData data;
+
+    public string GetInteractPrompt()
     {
-        
+        string str = $"{data.name} \n {data.Description}";
+
+        return str;
     }
 }
