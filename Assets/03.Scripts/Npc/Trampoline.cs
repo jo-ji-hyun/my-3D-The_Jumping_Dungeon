@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
     // === 가해지는 점프력 ===
-    private float _jump_Up = 40.0f;
+    private float _jump_Up = 30.0f;
 
     // === 충돌시 점프 (트리거 x) ===
     private void OnCollisionEnter(Collision collision)
