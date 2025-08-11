@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
@@ -9,34 +10,21 @@ public class GameManager : MonoBehaviour
     // === 다른 매니저들 호출 ===
     public PlayerManager PlayerManager { get; private set; }
 
+
     // === 싱글톤 선언 ===
-    private static GameManager _instance;
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameObject("GameManager").AddComponent<GameManager>();
-            }
-            return _instance;
-        }
-    }
+    public static GameManager Instance { get; private set; }
+
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance != null && Instance != this)
         {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this.gameObject);
+            return;
         }
-        else
-        {
-            if (_instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
+
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
         // === PlayerManager 생성 ===
         GameObject playerManagerObject = new GameObject("PlayerManager");
@@ -44,16 +32,17 @@ public class GameManager : MonoBehaviour
         playerManagerObject.transform.SetParent(transform);
     }
 
-    public void StartGame()
+    public void ReStartGame()
     {
-        // 나중에 추가
+        Time.timeScale = 1;
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     public void GameOver()
     {
-        Debug.LogError("게임 오버");
-
-        // 나중에 추가
+        Time.timeScale = 0;
     }
 
 }

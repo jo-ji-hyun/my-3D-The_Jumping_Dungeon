@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     public int maxStamina = 220; // === 최대 스테미나 ===
     public int curStamina;
 
-    public void Awake()
+    public void Start()
     {
         curHp = maxHp;
         curStamina = maxStamina;
