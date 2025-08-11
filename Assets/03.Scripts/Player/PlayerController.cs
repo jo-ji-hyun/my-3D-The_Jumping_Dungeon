@@ -102,9 +102,9 @@ public class PlayerController : MonoBehaviour
     // === 입력시 점프 ===
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && IsGrounded() && GameManager.Instance.PlayerManager.curStamina > 199)
+        if (context.phase == InputActionPhase.Started && IsGrounded() && GameManager.Instance.PlayerManager.curStamina >= GameManager.Instance.PlayerManager.maxStamina)
         {
-            GameManager.Instance.PlayerManager.curStamina -= 199;
+            GameManager.Instance.PlayerManager.curStamina = 0;
 
             if (_is_Jump_Boost == false) 
             {
