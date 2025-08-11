@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public bool _is_Jump_Boost = false;
     public float jumpBoostDuration = 3f;
     private Coroutine _coroutine;
+    // === 나타낼 시간 ===
+    public Image flashimage;
+    public float flashSpeed;
 
     [Header("Look")]   // === 카메라 관련 ===
     public Transform cameraBox;
@@ -89,11 +93,10 @@ public class PlayerController : MonoBehaviour
     // === E키를 눌러 아이템 사용 ===
     public void OnUseInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed) 
+        if (context.phase == InputActionPhase.Started && _is_Jump_Boost == false) 
         {
-            if (Inventory.Instance.inventory != null)
+            if (Inventory.Instance.inventory.Count > 0)
             {
-                Inventory.Instance.UseItem();
                 _coroutine = StartCoroutine(JumpBoostCoroutine());
             }
         }
@@ -113,6 +116,7 @@ public class PlayerController : MonoBehaviour
             else 
             {
                 GetComponent<Rigidbody>().AddForce(_jumpForce * 2 * Vector2.up, ForceMode.Impulse);
+                _is_Jump_Boost = false;
             }
         }
     }
@@ -122,9 +126,46 @@ public class PlayerController : MonoBehaviour
         // 점프 부스트 활성화
         _is_Jump_Boost = true;
 
+        Flash();
+
         yield return new WaitForSeconds(jumpBoostDuration);
 
-        _is_Jump_Boost = false;
+        Inventory.Instance.UseItem();
+
+    }
+
+    // === 화면 번쩍임 메서드 ===
+    void Flash()
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
+        flashimage.enabled = true;
+        flashimage.color = new Color(0, 0, 1f);
+        _coroutine = StartCoroutine(FadeAway());
+    }
+
+    // === 화면을 번쩍일 코루틴 ===
+    private IEnumerator FadeAway()
+    {
+        flashSpeed = 0.5f;
+
+        // === 화면 불투명도 ===
+        float startAlpa = 0.3f;
+        float a = startAlpa;
+
+        while (a > 0)
+        {
+            a -= (startAlpa / flashSpeed) * Time.deltaTime;
+            flashimage.color = new Color(0, 0, 1f, a);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(flashSpeed);
+
+        flashimage.enabled = false;
     }
 
     // === 땅인지 판별 ===
