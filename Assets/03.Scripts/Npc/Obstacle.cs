@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour
     // === Ãæµ¹½Ã ³Ëº¤ (Æ®¸®°Å x) ===
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out IDamageIbe damgeIbe))
+        if (collision.gameObject.TryGetComponent(out IDamageable damgeIbe))
         {
             damgeIbe.DamageCall(damage);
 

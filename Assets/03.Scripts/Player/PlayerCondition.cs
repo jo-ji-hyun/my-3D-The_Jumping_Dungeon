@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public interface IDamageIbe
+public interface IDamageable
 {
     void DamageCall(int damage);
 }
 
-public class PlayerCondition : MonoBehaviour, IDamageIbe
+public class PlayerCondition : MonoBehaviour, IDamageable
 {
     public event Action OnTakeDamage;
 
