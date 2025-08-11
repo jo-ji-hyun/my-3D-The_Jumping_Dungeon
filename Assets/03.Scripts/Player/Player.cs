@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Die"))
         {
+            GameManager.Instance.PlayerManager.curHp = 0;
             GameManager.Instance.GameOver();
         }
     }
