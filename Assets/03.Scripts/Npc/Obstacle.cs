@@ -9,36 +9,31 @@ public class Obstacle : MonoBehaviour
     [Header("Damage")]
     public int damage = 1;
     public float damageDelay = 0.9f;
+    private float _knockbackForce = 100f;
 
-    // === 인터페이스 IDamageIbe를 List로 불러옴 ===
-    List<IDamageIbe> players = new List<IDamageIbe>();
-
-    void Start()
+    // === 충돌시 넉벡 (트리거 x) ===
+    private void OnCollisionEnter(Collision collision)
     {
-        InvokeRepeating("DealDamage", 0, damageDelay);
-    }
-
-    private void DealDamage()
-    {
-        for (int i = 0; i < players.Count; i++)
+        if (collision.gameObject.TryGetComponent(out IDamageIbe damgeIbe))
         {
-            players[i].DamageCall(damage);
+            damgeIbe.DamageCall(damage);
+
+            // === 플레이어의 Rigidbody ===
+            Rigidbody _playerRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+
+            // === 충돌 지점 === 
+            Vector3 contactPoint = collision.contacts[0].point;
+
+            // === 넉백 방향 계산 (반대 방향으로 게산) === 
+            Vector3 knockbackDirection = (collision.transform.position - contactPoint).normalized;
+
+            Vector3 KnockbackDirectionZ = new(0, 0, knockbackDirection.z);
+
+            if (_playerRigidbody != null)
+            {
+                _playerRigidbody.AddForce(KnockbackDirectionZ * _knockbackForce, ForceMode.Impulse); // 순간적인 넉벡
+            }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IDamageIbe damgeIbe))
-        {
-            players.Add(damgeIbe);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out IDamageIbe damgeIbe))
-        {
-            players.Remove(damgeIbe);
-        }
-    }
 }
