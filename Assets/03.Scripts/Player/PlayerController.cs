@@ -102,8 +102,10 @@ public class PlayerController : MonoBehaviour
     // === 입력시 점프 ===
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && IsGrounded())
+        if (context.phase == InputActionPhase.Started && IsGrounded() && GameManager.Instance.PlayerManager.curStamina > 199)
         {
+            GameManager.Instance.PlayerManager.curStamina -= 199;
+
             if (_is_Jump_Boost == false) 
             {
                 GetComponent<Rigidbody>().AddForce(Vector2.up * _jumpForce, ForceMode.Impulse);
