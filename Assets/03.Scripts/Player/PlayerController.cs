@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]   // === 점프 ===
     private float _jumpForce = 6.5f;
     public LayerMask groundLayerMask;
+    // === 아이템 사용시 ===
+    public bool _is_Jump_Boost = false;
+    public float jumpBoostDuration = 3f;
+    private Coroutine _coroutine;
 
     [Header("Look")]   // === 카메라 관련 ===
     public Transform cameraBox;
@@ -82,13 +86,43 @@ public class PlayerController : MonoBehaviour
         _mouseDelta = context.ReadValue<Vector2>();
     }
 
+    // === E키를 눌러 아이템 사용 ===
+    public void OnUseInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed) 
+        {
+            if (Inventory.Instance.inventory != null)
+            {
+                Inventory.Instance.UseItem();
+                _coroutine = StartCoroutine(JumpBoostCoroutine());
+            }
+        }
+    }
+
     // === 입력시 점프 ===
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
-            GetComponent<Rigidbody>().AddForce(Vector2.up * _jumpForce, ForceMode.Impulse);
+            if (_is_Jump_Boost == false) 
+            {
+                GetComponent<Rigidbody>().AddForce(Vector2.up * _jumpForce, ForceMode.Impulse);
+            }
+            else 
+            {
+                GetComponent<Rigidbody>().AddForce(_jumpForce * 2 * Vector2.up, ForceMode.Impulse);
+            }
         }
+    }
+
+    IEnumerator JumpBoostCoroutine()
+    {
+        // 점프 부스트 활성화
+        _is_Jump_Boost = true;
+
+        yield return new WaitForSeconds(jumpBoostDuration);
+
+        _is_Jump_Boost = false;
     }
 
     // === 땅인지 판별 ===
