@@ -31,7 +31,6 @@ public class ItemData : ScriptableObject
     public string Description;
     public ItemType type;
     public Sprite icon;
-    public GameObject dropPrefabs;
 
     [Header("Consumable")]
     public ItemDataConsumable[] consumables;

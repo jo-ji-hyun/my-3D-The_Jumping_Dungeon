@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Click",
+                    "name": "Use",
                     "type": "Button",
                     "id": "d895b876-08b1-40d8-a5aa-ba79f92a72c3",
                     "expectedControlType": "Button",
@@ -112,11 +112,11 @@
                 {
                     "name": "",
                     "id": "b8b40f62-0311-4939-8d97-663b81a32a41",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
