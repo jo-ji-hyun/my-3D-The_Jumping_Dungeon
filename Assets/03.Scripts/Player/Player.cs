@@ -15,4 +15,13 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
     }
+
+    // === ¹Ù´Ù¿¡ ¶³¾îÁú½Ã »ç¸Á ===
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Die"))
+        {
+            GameManager.Instance.GameOver();
+        }
+    }
 }

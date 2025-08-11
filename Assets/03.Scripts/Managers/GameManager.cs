@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.LogError("게임 오버");
+
         // 나중에 추가
     }
 
