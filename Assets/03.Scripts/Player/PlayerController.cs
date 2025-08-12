@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Look")]   // === 카메라 관련 ===
     public Transform cameraBox;
+    public Transform secondcamera;
+    private bool _mainCamera = true;
 
     private float _minXLook = -65.0f;
     private float _maxXLook = +65.0f;
@@ -39,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
+        cameraBox.gameObject.SetActive(_mainCamera);
+        secondcamera.gameObject.SetActive(!_mainCamera);
     }
 
     private void Update()
@@ -188,5 +193,17 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;        // === groundLayerMask가 아닐경우 ===
+    }
+
+    // === Q키를 눌러 카메라 전환 ===
+    public void OnSwitchInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _mainCamera = !_mainCamera;
+
+            cameraBox.gameObject.SetActive(_mainCamera);
+            secondcamera.gameObject.SetActive(!_mainCamera);
+        }
     }
 }
