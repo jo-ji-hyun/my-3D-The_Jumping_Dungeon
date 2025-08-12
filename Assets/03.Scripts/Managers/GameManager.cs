@@ -49,4 +49,8 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+    public void GameClear()
+    {
+
+    }
 }

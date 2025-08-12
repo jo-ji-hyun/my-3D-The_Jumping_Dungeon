@@ -24,5 +24,10 @@ public class Player : MonoBehaviour
             GameManager.Instance.PlayerManager.curHp = 0;
             GameManager.Instance.GameOver();
         }
+
+        if (collision.gameObject.CompareTag("Clear"))
+        {
+            GameManager.Instance.GameClear();
+        }
     }
 }
