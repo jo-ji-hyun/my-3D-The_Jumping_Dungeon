@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [Header("Look")]   // === 카메라 관련 ===
     public Transform cameraBox;
     public Transform secondcamera;
+    public Image cameraFront;
+    public Image cameraBack;
     private bool _mainCamera = true;
 
     private float _minXLook = -65.0f;
@@ -43,7 +45,10 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
 
         cameraBox.gameObject.SetActive(_mainCamera);
+        cameraFront.gameObject.SetActive(_mainCamera);
+
         secondcamera.gameObject.SetActive(!_mainCamera);
+        cameraBack.gameObject.SetActive(!_mainCamera);
     }
 
     private void Update()
@@ -211,7 +216,10 @@ public class PlayerController : MonoBehaviour
             _mainCamera = !_mainCamera;
 
             cameraBox.gameObject.SetActive(_mainCamera);
+            cameraFront.gameObject.SetActive(_mainCamera);
+
             secondcamera.gameObject.SetActive(!_mainCamera);
+            cameraBack.gameObject.SetActive(!_mainCamera);
         }
     }
 }
