@@ -1,6 +1,8 @@
 # my-3D-The_Jumping_Dungeon
 3D로 구현한 점프맵 출구를 향해 무한점프하세요!
 
+![](Assets/09.Git/end.png)
+
 기본 스텟 : 체력(3), 스테미나(220), 인벤토리[E], 카메라 전환[Q]
 
 ![](Assets/09.Git/stat.png)
@@ -31,6 +33,10 @@ E : 아이템 사용
 
 ![](Assets/09.Git/Jumpup.gif)
 
+(회복아이템) (즉발)
+
+![](Assets/09.Git/heal.gif)
+
 Q : 카메라 전환
 
 ![](Assets/09.Git/SwitchCamera.gif)
@@ -47,3 +53,7 @@ Q : 카메라 전환
 [Fix] 버그 해결
 
 [Feat] 그외의 작업
+
+## 에셋
+
+https://assetstore.unity.com/packages/3d/environments/historic/medieval-bridge-3d-67509
