@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     // === 게임 클리어시 보여줄 창 ===
     public GameObject gameClearPanel;
 
+    // === 게임 종료 확인 ===
+    public bool gameSet = false;
+
     // === 싱글톤 선언 ===
     public static GameManager Instance { get; private set; }
 
@@ -37,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public void ReStartGame()
     {
+        gameSet = false;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Time.timeScale = 1.0f;
@@ -56,12 +61,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        gameSet = true;
         gameOverPanel.SetActive(true);
         Time.timeScale = 0.0f;
     }
 
     public void GameClear()
     {
+        gameSet = true;
         gameClearPanel.SetActive(true);
         Time.timeScale = 0.0f;
     }
