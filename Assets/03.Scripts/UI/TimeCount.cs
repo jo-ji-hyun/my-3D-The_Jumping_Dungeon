@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class TimeCount : MonoBehaviour
 {
-    // === 게임 오버시 보여줄 창 ===
-    public GameObject gameOverPanel;
-
-
     private void Start()
     {
-        gameOverPanel.SetActive(false);
-    }
-
-    public void OnStartButton()
-    {
-        GameManager.Instance.ReStartGame();
-    }
-
-    public void GameOverPanel()
-    {
-        gameOverPanel.SetActive(true);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.gameOverPanel = this.gameObject;
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("GameManager 인스턴스를 찾을 수 없습니다.");
+        }
     }
 }

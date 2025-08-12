@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
     // === 다른 매니저들 호출 ===
     public PlayerManager PlayerManager { get; private set; }
 
+    // === 게임 오버시 보여줄 창 ===
+    public GameObject gameOverPanel;
 
     // === 싱글톤 선언 ===
     public static GameManager Instance { get; private set; }
@@ -34,15 +34,19 @@ public class GameManager : MonoBehaviour
 
     public void ReStartGame()
     {
-        Time.timeScale = 1;
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
+
+        PlayerManager.curHp = PlayerManager.maxHp;
     }
 
     public void GameOver()
     {
-        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
     }
 
 }
