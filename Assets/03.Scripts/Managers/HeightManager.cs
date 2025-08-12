@@ -34,9 +34,9 @@ public class HeightManager : MonoBehaviour
             // === 판넬이 켜져있는지 확인 ===
             if(victoryText != null || defeatText != null)
             {
-                if (heightDifference > 0 && GameManager.Instance.gameSet == true)
+                if (GameManager.Instance.gameSet == true)
                 {
-                    victoryText.text = (player.position.y).ToString("F1") + "m";
+                    victoryText.text = player.position.y.ToString("F1") + "m";
                 }
                 else
                 {
