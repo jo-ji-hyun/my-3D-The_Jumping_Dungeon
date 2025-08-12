@@ -6,13 +6,13 @@ using UnityEngine;
 public enum ItemType
 {
     Consumable,
+    Health,
     Resource
 }
 
 public enum ConsumableType
 {
-    Health,
-    // stamina
+    Health
 }
 
 [Serializable]

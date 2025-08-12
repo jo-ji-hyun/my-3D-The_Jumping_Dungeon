@@ -28,6 +28,12 @@ public class Inventory : MonoBehaviour
     public void GetItem(ItemData item)
     {
         inventory.Add(item);
+        // === 회복아이템은 바로 회복 ===
+        if (item.type == ItemType.Health)
+        {
+            AddHp((int)item.consumables[0].value);
+            return;
+        }
 
         icon.sprite = item.icon;
         displayDescription.text = item.Description;
@@ -44,4 +50,8 @@ public class Inventory : MonoBehaviour
         displayDescription.gameObject.SetActive(false);
     }
 
+    public void AddHp(int value)
+    {
+        GameManager.Instance.PlayerManager.curHp = Mathf.Min(GameManager.Instance.PlayerManager.curHp + value, GameManager.Instance.PlayerManager.maxHp);
+    }
 }

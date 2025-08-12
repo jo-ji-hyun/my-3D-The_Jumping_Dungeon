@@ -20,11 +20,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     }
     // === 데미지 계산 ===
 
-    public void AddHp(int value)
-    {
-        GameManager.Instance.PlayerManager.curHp = Mathf.Min(GameManager.Instance.PlayerManager.curHp - value, GameManager.Instance.PlayerManager.maxHp);
-    }
-
     public void SubtractHp(int value)
     {
         GameManager.Instance.PlayerManager.curHp = Mathf.Max(GameManager.Instance.PlayerManager.curHp - value, 0);
