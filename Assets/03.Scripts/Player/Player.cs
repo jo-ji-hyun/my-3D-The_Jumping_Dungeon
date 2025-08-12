@@ -25,7 +25,12 @@ public class Player : MonoBehaviour
             GameManager.Instance.GameOver();
         }
 
-        if (collision.gameObject.CompareTag("Clear"))
+    }
+
+    // === 성벽에 닿을시 클리어 ===
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Clear"))
         {
             GameManager.Instance.GameClear();
         }

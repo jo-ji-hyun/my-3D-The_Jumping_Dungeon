@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     // === 게임 오버시 보여줄 창 ===
     public GameObject gameOverPanel;
 
+    // === 게임 클리어시 보여줄 창 ===
+    public GameObject gameClearPanel;
+
     // === 싱글톤 선언 ===
     public static GameManager Instance { get; private set; }
 
@@ -36,9 +39,16 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+        Time.timeScale = 1.0f;
+
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(false);
+        }
+
+        if (gameClearPanel != null)
+        {
+            gameClearPanel.SetActive(false);
         }
 
         PlayerManager.curHp = PlayerManager.maxHp;
@@ -47,10 +57,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     public void GameClear()
     {
-
+        gameClearPanel.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 }
