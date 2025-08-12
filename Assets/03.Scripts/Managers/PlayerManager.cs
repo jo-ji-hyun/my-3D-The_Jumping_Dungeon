@@ -21,15 +21,18 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if(curStamina != maxStamina)
-        {
-            curStamina += 1;
-        }
-
         // === 현재 체력이 0이하일 경우 게임오버 ===
         if (curHp <= 0) 
         {
             GameManager.Instance.GameOver();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (curStamina != maxStamina)
+        {
+            curStamina += 2;
         }
     }
 
