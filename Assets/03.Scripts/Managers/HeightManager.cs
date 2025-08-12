@@ -25,6 +25,12 @@ public class HeightManager : MonoBehaviour
     private float _min_PlayerY = 1.0f;
     private float _max_PlayerY = 55.0f;
 
+    private void Start()
+    {
+        _min_PlayerY = player.transform.position.y;
+        _max_PlayerY = target.transform.position.y;
+    }
+
     void Update()
     {
         if (player != null && target != null)
