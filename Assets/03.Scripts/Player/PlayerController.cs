@@ -84,7 +84,15 @@ public class PlayerController : MonoBehaviour
     {
         _cameraXRot += _mouseDelta.y * _lookSensitivity;
         _cameraXRot = Mathf.Clamp(_cameraXRot, _minXLook, _maxXLook);
-        cameraBox.localEulerAngles = new Vector3(-_cameraXRot, 0, 0);
+
+        if(_mainCamera == true)
+        {
+            cameraBox.localEulerAngles = new Vector3(-_cameraXRot, 0, 0);
+        }
+        else
+        {
+            secondcamera.localEulerAngles = new Vector3(-_cameraXRot, 0, 0);
+        }
 
         transform.eulerAngles += new Vector3(0, _mouseDelta.x * _lookSensitivity, 0);
     }

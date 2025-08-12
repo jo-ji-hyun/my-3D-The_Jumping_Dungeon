@@ -44,7 +44,7 @@
                 {
                     "name": "Switch",
                     "type": "Button",
-                    "id": "9d0b5690-2094-4405-bd2f-c35f3e26a269",
+                    "id": "a9eee1bf-07b9-48d5-a8a6-4bcac791ddad",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -142,7 +142,7 @@
                 },
                 {
                     "name": "",
-                    "id": "340c3fdf-5f64-4759-855d-b93ac9bd68f8",
+                    "id": "9a2cc375-1eaa-4936-b590-e2cbbf424007",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
