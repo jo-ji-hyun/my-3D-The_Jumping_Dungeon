@@ -7,6 +7,10 @@
 
 ![](Assets/09.Git/stat.png)
 
+목표까지의 남은 거리 (좌측 상단)
+ 
+![](Assets/09.Git/position.png)
+
 장애물에 부딪힐시 체력감소
 
 ![](Assets/09.Git/Vine.gif)
