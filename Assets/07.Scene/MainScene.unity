@@ -2837,7 +2837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &524273934
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3687,7 +3686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &622601393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4429,7 +4427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &712869441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5633,14 +5630,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077805216}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.01, y: 53.61, z: 29.38}
+  m_LocalRotation: {x: -0.89239913, y: 0.36964378, z: 0.23911767, w: -0.09904577}
+  m_LocalPosition: {x: 14.01, y: 53.61, z: 31}
   m_LocalScale: {x: 0.5, y: 0.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 900084854}
   m_Father: {fileID: 813535442}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 30, z: 45}
 --- !u!114 &1077805218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5682,7 +5679,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1077805221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6366,7 +6362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1191118704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7332,7 +7327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1311260408
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8830,7 +8825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1613017788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9061,7 +9055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1649951744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9131,7 +9124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1659467988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10203,7 +10195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1898497087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10286,7 +10277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &1938030434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11177,7 +11167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageDelay: 0.9
 --- !u!65 &2071601203
 BoxCollider:
   m_ObjectHideFlags: 0
