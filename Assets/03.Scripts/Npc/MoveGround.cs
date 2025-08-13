@@ -19,12 +19,11 @@ public class MoveGround : MonoBehaviour
     private Rigidbody _rb;
 
     // === 이전 위치 ===
-    private Vector3 _previous_Pos;
+    private Vector3 _platform_Velocity;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _previous_Pos = transform.position;
         startPoint = transform.position;
     
         if (movementType == MovementType.Horizontal)
@@ -42,29 +41,14 @@ public class MoveGround : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
 
         float t = Mathf.PingPong(timer, moveTime) / moveTime;
 
         Vector3 newPosition = Vector3.Lerp(startPoint, endPoint, t);
 
-        _previous_Pos = newPosition;
-
         _rb.MovePosition(newPosition);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
-
-            if (playerRb != null)
-            {
-                playerRb.position = _previous_Pos;
-            }
-        }
     }
 }

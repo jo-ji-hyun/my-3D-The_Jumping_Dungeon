@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Die
   - Clear
+  - Moving
   layers:
   - Default
   - TransparentFX

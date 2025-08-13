@@ -24,10 +24,10 @@ public class PlayerController : MonoBehaviour
     public float flashSpeed;
 
     [Header("Look")]   // === 카메라 관련 ===
-    public Transform cameraBox;
-    public Transform secondcamera;
-    public Image cameraFront;
-    public Image cameraBack;
+    public Transform cameraBox;     // 메인
+    public Transform secondcamera;   // 3D
+    public Image cameraFront;         // 메인 이미지
+    public Image cameraBack;           // 3D 이미지
     private bool _mainCamera = true;
 
     private float _minXLook = -65.0f;
@@ -37,8 +37,10 @@ public class PlayerController : MonoBehaviour
     private float _lookSensitivity = 0.1f;
     private Vector2 _mouseDelta;
 
-    // === 그 외 ===
+    // === 이동하는 플렛폼 정보 ===
     private Rigidbody _rigidbody;
+    private Transform _platform_Transform; 
+    private Vector3 _platform_Last_Position; 
 
     private void Awake()
     {
@@ -56,9 +58,43 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    void FixedUpdate()
+    {
+        // === 플렛폼 위에 있을 경우 ===
+        if (_platform_Transform != null)
+        {
+            // === 플렛폼 이동량 계산 ===
+            Vector3 platformDelta = _platform_Transform.position - _platform_Last_Position;
+
+            _rigidbody.position += platformDelta / 2;
+
+            // === 마지막 플렛폼 위치 갱신 ===
+            _platform_Last_Position = _platform_Transform.position;
+        }
+    }
+
     private void LateUpdate()
     {
         CameraLook();
+    }
+
+    // === 충돌 판정 ===
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Moving"))
+        {
+            _platform_Transform = collision.transform;
+            // === 닿을때 플렛폼의 위치 저장 ===
+            _platform_Last_Position = _platform_Transform.position;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Moving"))
+        {
+            _platform_Transform = null;
+        }
     }
 
     // === 이동 ===

@@ -1853,7 +1853,7 @@ GameObject:
   - component: {fileID: 285315442}
   m_Layer: 6
   m_Name: Ground (3)_x
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2002,7 +2002,7 @@ GameObject:
   - component: {fileID: 327539806}
   m_Layer: 6
   m_Name: Ground (13)_y
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3640,7 +3640,7 @@ GameObject:
   - component: {fileID: 622601395}
   m_Layer: 7
   m_Name: Obstacle (8)_x
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5645,8 +5645,8 @@ GameObject:
   - component: {fileID: 1077805218}
   - component: {fileID: 1077805222}
   m_Layer: 7
-  m_Name: Obstacle (9)_x
-  m_TagString: Untagged
+  m_Name: Obstacle (9)_z
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5679,7 +5679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3034389aec29544a90e8b01bc32c3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 0
+  movementType: 1
   moveTime: 2
   endOffset: 6
 --- !u!114 &1077805219
@@ -5819,7 +5819,7 @@ GameObject:
   - component: {fileID: 1099111262}
   m_Layer: 6
   m_Name: Ground (11)_x
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7235,7 +7235,7 @@ GameObject:
   - component: {fileID: 1300927173}
   m_Layer: 7
   m_Name: Trampoline (7)_x
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8948,7 +8948,7 @@ GameObject:
   - component: {fileID: 1633999948}
   m_Layer: 7
   m_Name: Trampoline (8)_x
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9872,7 +9872,7 @@ GameObject:
   - component: {fileID: 1844920618}
   m_Layer: 6
   m_Name: Ground (12)_z
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10113,7 +10113,7 @@ GameObject:
   - component: {fileID: 1874633513}
   m_Layer: 6
   m_Name: Ground (15)_z
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10805,7 +10805,7 @@ GameObject:
   - component: {fileID: 2020391817}
   m_Layer: 6
   m_Name: Ground (14)_y
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11088,7 +11088,7 @@ GameObject:
   - component: {fileID: 2051801933}
   m_Layer: 7
   m_Name: Trampoline (6)_x
-  m_TagString: Untagged
+  m_TagString: Moving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
