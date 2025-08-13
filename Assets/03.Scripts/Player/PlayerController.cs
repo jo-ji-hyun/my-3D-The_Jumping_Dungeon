@@ -41,13 +41,13 @@ public class PlayerController : MonoBehaviour
     private bool _mouse_Look = false;
 
     // === ÀÌµ¿ÇÏ´Â ÇÃ·¿Æû Á¤º¸ ===
-    private Rigidbody _rigidbody;
+    public Rigidbody playerRigidbody;
     private Transform _platform_Transform; 
     private Vector3 _platform_Last_Position; 
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
 
         cameraBox.gameObject.SetActive(mainCamera);
         cameraFront.gameObject.SetActive(mainCamera);
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             // === ÇÃ·¿Æû ÀÌµ¿·® °è»ê ===
             Vector3 platformDelta = _platform_Transform.position - _platform_Last_Position;
 
-            _rigidbody.position += platformDelta / 1.5f;
+            playerRigidbody.position += platformDelta / 1.5f;
 
             // === ¸¶Áö¸· ÇÃ·¿Æû À§Ä¡ °»½Å ===
             _platform_Last_Position = _platform_Transform.position;
