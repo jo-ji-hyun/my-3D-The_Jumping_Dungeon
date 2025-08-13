@@ -19,6 +19,10 @@
 
 ![](Assets/09.Git/tree.png)
 
+구간 스킵을 할수있는 벽이있으며 닿으면 위로 상승합니다. (알아서 올라감)
+
+![](Assets/09.Git/walljump.gif)
+
 ## 개발 도구
 Unity 버전 2022.3.17f1
 
