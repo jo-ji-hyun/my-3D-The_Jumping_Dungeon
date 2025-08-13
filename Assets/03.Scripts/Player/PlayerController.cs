@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             // === ÇÃ·¿Æû ÀÌµ¿·® °è»ê ===
             Vector3 platformDelta = _platform_Transform.position - _platform_Last_Position;
 
-            _rigidbody.position += platformDelta / 2;
+            _rigidbody.position += platformDelta / 1.5f;
 
             // === ¸¶Áö¸· ÇÃ·¿Æû À§Ä¡ °»½Å ===
             _platform_Last_Position = _platform_Transform.position;
