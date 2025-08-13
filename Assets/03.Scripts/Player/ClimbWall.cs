@@ -11,20 +11,22 @@ public class ClimbWall : MonoBehaviour
         // === 벽일 경우===
         if (IsWall())
         {
-            Debug.Log("벽에 붙음");
-            GameManager.Instance.PlayerManager.Player.controller.playerRigidbody.AddForce(Vector2.up, ForceMode.Force);
+            GameManager.Instance.PlayerManager.Player.controller.playerRigidbody.AddForce(14.0f * Vector3.up, ForceMode.Force);
         }
     }
 
     // === 레이저를 쏘아 벽인지 확인 ===
     bool IsWall()
     {
-        Ray[] rays = new Ray[4]
+        Ray[] rays = new Ray[7]
         {
-            new Ray(transform.position + (transform.forward * 0.1f) + (transform.up * 0.1f), Vector3.up),
-            new Ray(transform.position + (-transform.forward * 0.1f) + (transform.up * 0.1f),Vector3.up),
-            new Ray(transform.position + (transform.right * 0.1f) + (transform.up * 0.1f), Vector3.up),
-            new Ray(transform.position + (-transform.right * 0.1f) +(transform.up * 0.1f), Vector3.up)
+            new Ray(transform.position + (transform.forward * 0.1f) + (transform.up * 0.1f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.1f) + (transform.up * 0.1f),Vector3.down),
+            new Ray(transform.position + (transform.right * 0.1f) + (transform.up * 0.1f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.1f) +(transform.up * 0.1f), Vector3.down),
+            new Ray(transform.position, transform.forward),
+            new Ray(transform.position, transform.right),
+            new Ray(transform.position, -transform.right)
         };
 
         for (int i = 0; i < rays.Length; i++)
