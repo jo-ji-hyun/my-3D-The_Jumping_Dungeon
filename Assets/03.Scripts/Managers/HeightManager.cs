@@ -22,14 +22,8 @@ public class HeightManager : MonoBehaviour
     private float _max_MarkerY = +100f;
 
     // === 실제 최저,최고 높이 ===
-    private float _min_PlayerY = 1.0f;
-    private float _max_PlayerY = 55.0f;
-
-    private void Start()
-    {
-        _min_PlayerY = player.transform.position.y;
-        _max_PlayerY = target.transform.position.y;
-    }
+    private float _min_PlayerY = 0.0f;
+    private float _max_PlayerY = 66.0f;
 
     void Update()
     {
