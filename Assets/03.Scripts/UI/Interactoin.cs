@@ -27,6 +27,12 @@ public class Interactoin : MonoBehaviour
 
     void Update()
     {
+         // === 3D 카메라일 경우 ===
+        if (!GameManager.Instance.PlayerManager.Player.controller.mainCamera)
+        {
+            maxCheckDistance = 10.0f;
+        }
+
         if (Time.time - _lastCheck > _checkRate)
         {
             _lastCheck = Time.time;

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public Transform secondcamera;   // 3D
     public Image cameraFront;         // 메인 이미지
     public Image cameraBack;           // 3D 이미지
-    private bool _mainCamera = true;
+    public bool mainCamera = true;
 
     private float _minXLook = -65.0f;
     private float _maxXLook = +65.0f;
@@ -46,11 +46,11 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
 
-        cameraBox.gameObject.SetActive(_mainCamera);
-        cameraFront.gameObject.SetActive(_mainCamera);
+        cameraBox.gameObject.SetActive(mainCamera);
+        cameraFront.gameObject.SetActive(mainCamera);
 
-        secondcamera.gameObject.SetActive(!_mainCamera);
-        cameraBack.gameObject.SetActive(!_mainCamera);
+        secondcamera.gameObject.SetActive(!mainCamera);
+        cameraBack.gameObject.SetActive(!mainCamera);
     }
 
     private void Update()
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         _cameraXRot += _mouseDelta.y * _lookSensitivity;
         _cameraXRot = Mathf.Clamp(_cameraXRot, _minXLook, _maxXLook);
 
-        if(_mainCamera == true)
+        if(mainCamera == true)
         {
             cameraBox.localEulerAngles = new Vector3(-_cameraXRot, 0, 0);
         }
@@ -249,13 +249,13 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            _mainCamera = !_mainCamera;
+            mainCamera = !mainCamera;
 
-            cameraBox.gameObject.SetActive(_mainCamera);
-            cameraFront.gameObject.SetActive(_mainCamera);
+            cameraBox.gameObject.SetActive(mainCamera);
+            cameraFront.gameObject.SetActive(mainCamera);
 
-            secondcamera.gameObject.SetActive(!_mainCamera);
-            cameraBack.gameObject.SetActive(!_mainCamera);
+            secondcamera.gameObject.SetActive(!mainCamera);
+            cameraBack.gameObject.SetActive(!mainCamera);
         }
     }
 }
