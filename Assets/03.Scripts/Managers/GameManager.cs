@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     {
         gameSet = false;
 
+        PlayerManager.Player.controller.ToggleCursor(false);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Time.timeScale = 1.0f;
@@ -62,6 +64,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameSet = true;
+
+        PlayerManager.Player.controller.ToggleCursor(true);
+
         gameOverPanel.SetActive(true);
         Time.timeScale = 0.0f;
     }
@@ -69,6 +74,9 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         gameSet = true;
+
+        PlayerManager.Player.controller.ToggleCursor(true);
+
         gameClearPanel.SetActive(true);
         Time.timeScale = 0.0f;
     }

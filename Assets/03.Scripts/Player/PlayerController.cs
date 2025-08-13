@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
     private float _lookSensitivity = 0.1f;
     private Vector2 _mouseDelta;
 
+    // === 마우스 안보이게 하기 ===
+    private bool _mouse_Look = false;
+
     // === 이동하는 플렛폼 정보 ===
     private Rigidbody _rigidbody;
     private Transform _platform_Transform; 
@@ -51,6 +54,15 @@ public class PlayerController : MonoBehaviour
 
         secondcamera.gameObject.SetActive(!mainCamera);
         cameraBack.gameObject.SetActive(!mainCamera);
+    }
+
+    void Start()
+    {
+        if(GameManager.Instance != null)
+        {
+            // === 마우스 잠금 ===
+            ToggleCursor(false);
+        }
     }
 
     private void Update()
@@ -257,5 +269,13 @@ public class PlayerController : MonoBehaviour
             secondcamera.gameObject.SetActive(!mainCamera);
             cameraBack.gameObject.SetActive(!mainCamera);
         }
+    }
+
+    // === 마우스 잠금 ===
+    public void ToggleCursor(bool toggle)
+    {
+        // === true면 잠금해제 ===
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        _mouse_Look = !toggle;
     }
 }
