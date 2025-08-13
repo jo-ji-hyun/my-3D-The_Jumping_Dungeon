@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uB098\uBB34"
   Description: "\uC544\uB08C\uC5C6\uC774 \uC904\uC9C0\uB3C4 \uBAA8\uB978\uB2E4"
-  type: 1
+  type: 2
   icon: {fileID: 0}
-  dropPrefabs: {fileID: 0}
   consumables: []

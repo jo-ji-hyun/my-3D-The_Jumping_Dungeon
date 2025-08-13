@@ -5,9 +5,9 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Consumable,
-    Health,
-    Resource
+    Consumable,  // 소비템
+    Health,       // 즉시 발동
+    Resource       // 나머지
 }
 
 public enum ConsumableType

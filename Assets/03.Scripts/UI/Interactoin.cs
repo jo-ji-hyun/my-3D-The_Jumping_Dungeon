@@ -30,7 +30,7 @@ public class Interactoin : MonoBehaviour
          // === 3D 카메라일 경우 ===
         if (!GameManager.Instance.PlayerManager.Player.controller.mainCamera)
         {
-            maxCheckDistance = 10.0f;
+            maxCheckDistance = 11.0f;
         }
 
         if (Time.time - _lastCheck > _checkRate)
